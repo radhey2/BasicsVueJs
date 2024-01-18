@@ -1,139 +1,33 @@
 <template>
-  <div> <h2>Hello {{ name }} Department is {{ dept }}</h2>
-  <h3 v-text="company"></h3>
-  <h3 v-html="role"></h3>
-  <h3 v-bind:id="empId">EmpId is SPICE1234</h3>
-  <button v-bind:disabled="isDisabled">Click</button>
-  <h3 class="underLine">UnderLine Text</h3>
-  <h3 v-bind:class="status">Status</h3>
-  <h3 v-bind:class="isPromoted && 'promoted'" >Promoted Movies</h3>
-  <h3 v-bind:class="isSoldOut ? 'sold-out' : 'new-movie'">Soldout ? movie </h3>
-  <h3 v-bind:class="['new-movie', 'promoted']">Newly promoted movie</h3>
-  <h3 v-bind:class="[isPromoted && 'promoted', isSoldOut ? 'sold-out' : 'new']">Array conditional movie</h3>
-   <h3 v-bind:class="{
-    promoted : isPromoted,
-    new : !isSoldOut,
-    'sold-out' : isSoldOut
-   }">Object conditional movie</h3>
-  <h3 v-bind:style="{
-    color : highlightcolor,
-    fontSize : headersize + 'px',
-    padding : '20px'
-  }">Inline Style</h3>
-  <h3 v-bind:style="headerStyleObject">Style Object</h3>
-  <h3 :style="[baseStyleObject,successStyleObject]">Success Style Object</h3>
- 
- <!-- 
-  Conditional randering 
-  v- show element persent in dom after false exp but v-if element is remove from dom after false exp
-  -->
-  <h3 v-if="num === 0">Number is {{num}}</h3>
-  <h3 v-if="num < 0">Number is Negative </h3>
-  <h3 v-else>Number is {{num}}</h3>
-  <template v-if="display">
-    <h2>Radhey</h2>
-    <h2>Vuejs</h2>
-    <h2>SpiceMoney</h2>
-  </template>
-
   <!-- 
-    List rendering using v- for directives its like loops
+    to see the change when there is no key use the below link
+    CodeSandBox - https://codesandbox.io/s/dazzling-kho...
    -->
-   <h2 v-for="name in names" :key="name">{{ name }}</h2>
-   <!-- 
-    name with index values
-    -->
-   <h2 v-for="(name,index) in names" :key="name">{{index}} {{ name }}</h2>
-  <!-- 
-  Array of Object using v-for
-  -->
-   <h2 v-for="name in fullNames" :key="name">{{ name.firstName }} {{ name.lastName }}</h2>
-
-   <!-- 
-    Array of Arrays
-    -->
-  <div v-for="actor in actors" :key="actor">
-    <h4>Actor Name : {{ actor.name }}</h4>
-    <ul>
-      <li v-for="movie in actor.movies" :key="movie">
-      {{ movie }}
-      </li>
-    </ul>
-  </div>
-  <h3 v-for="(info,key,index) in myInfo" :key="info">
-    {{index}} {{ key }} {{ info }}
-  </h3>
-  <h3 v-for="name in names" :key="name">
-    {{ name}}
-    <hr>
-  </h3>
-  </div>
+  <template v-for="name in names" :key="name">
+      <h2>{{ name }}</h2>
+      <input placeholder="Last name" />
+      <hr />
+    </template>
+    <button @click="shuffle">Shuffle!</button>
 
 </template>
 
 <script>
-
-
-export default {
-  name: 'App',
-  data() {
-    return {
-      name: "Radhey",
-      dept: "CMS",
-      company: "Spicemoney",
-      role: "<b>Software Engineer</b>",
-      empId: "id",
-      isDisabled: true,
-      status: "active",
-      isPromoted: true,
-      isSoldOut: false,
-      highlightcolor: 'orange',
-      headersize: 40,
-      headerStyleObject: {
-         color: 'yellow',
-        fontSize: 40 + 'px',
-        padding: '20px'
+import _ from "lodash";
+  export default {
+    name: "App",
+    data() {
+      return {
+        names: ["Bruce", "Clark", "Diana", "Barry"],
+      };
+    },
+    methods: {
+      shuffle() {
+        console.log(this.names);
+        this.names = _.shuffle(this.names);
       },
-      baseStyleObject: {
-         fontSize: '50px',
-        padding: '100px'
-      },
-      successStyleObject: {
-        color: 'green',
-        backgroundColor: 'ligtgreen',
-        border : '1px solid green'
-      },
-      num: -10,
-      display: true,
-      names: ['bruce', 'bill', 'radhey'],
-      fullNames: [
-        { firstName: 'Bill', lastName: 'Jam' },
-        { firstName: 'sam', lastName: 'sharma' },
-        { firstName: 'jhon', lastName: 'cena' },
-      ],
-      actors: [
-        {
-          name: 'Amir',
-        movies : ['Three Idiots', 'PK','andaz apna apna'] 
-        },
-        {
-          name: 'Salman',
-          movies: ['jai ho', 'Tiger zinda h', 'andaz apna apna']
-        },
-        {
-          name: 'Shahruk',
-          movies: ['KKKG', 'Kal ho na ho', 'jab tak h jaan']
-        }
-      ],
-      myInfo: {
-        name: 'Radhey',
-        course: 'vuejs',
-        type : 'development'
-    }
-    }
-  },
-  
-}
+    },
+};
 </script>
 
 <style>
