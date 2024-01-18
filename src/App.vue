@@ -22,6 +22,19 @@
   }">Inline Style</h3>
   <h3 v-bind:style="headerStyleObject">Style Object</h3>
   <h3 :style="[baseStyleObject,successStyleObject]">Success Style Object</h3>
+ 
+ <!-- 
+  Conditional randering 
+  v- show element persent in dom after false exp but v-if element is remove from dom after false exp
+  -->
+  <h3 v-if="num === 0">Number is {{num}}</h3>
+  <h3 v-if="num < 0">Number is Negative </h3>
+  <h3 v-else>Number is {{num}}</h3>
+  <template v-if="display">
+    <h2>Radhey</h2>
+    <h2>Vuejs</h2>
+    <h2>SpiceMoney</h2>
+  </template>
   </div>
 
 </template>
@@ -57,7 +70,9 @@ export default {
         color: 'green',
         backgroundColor: 'ligtgreen',
         border : '1px solid green'
-      }
+      },
+      num: -10,
+      display : true
     }
   },
   
