@@ -35,6 +35,38 @@
     <h2>Vuejs</h2>
     <h2>SpiceMoney</h2>
   </template>
+
+  <!-- 
+    List rendering using v- for directives its like loops
+   -->
+   <h2 v-for="name in names" :key="name">{{ name }}</h2>
+   <!-- 
+    name with index values
+    -->
+   <h2 v-for="(name,index) in names" :key="name">{{index}} {{ name }}</h2>
+  <!-- 
+  Array of Object using v-for
+  -->
+   <h2 v-for="name in fullNames" :key="name">{{ name.firstName }} {{ name.lastName }}</h2>
+
+   <!-- 
+    Array of Arrays
+    -->
+  <div v-for="actor in actors" :key="actor">
+    <h4>Actor Name : {{ actor.name }}</h4>
+    <ul>
+      <li v-for="movie in actor.movies" :key="movie">
+      {{ movie }}
+      </li>
+    </ul>
+  </div>
+  <h3 v-for="(info,key,index) in myInfo" :key="info">
+    {{index}} {{ key }} {{ info }}
+  </h3>
+  <h3 v-for="name in names" :key="name">
+    {{ name}}
+    <hr>
+  </h3>
   </div>
 
 </template>
@@ -72,7 +104,32 @@ export default {
         border : '1px solid green'
       },
       num: -10,
-      display : true
+      display: true,
+      names: ['bruce', 'bill', 'radhey'],
+      fullNames: [
+        { firstName: 'Bill', lastName: 'Jam' },
+        { firstName: 'sam', lastName: 'sharma' },
+        { firstName: 'jhon', lastName: 'cena' },
+      ],
+      actors: [
+        {
+          name: 'Amir',
+        movies : ['Three Idiots', 'PK','andaz apna apna'] 
+        },
+        {
+          name: 'Salman',
+          movies: ['jai ho', 'Tiger zinda h', 'andaz apna apna']
+        },
+        {
+          name: 'Shahruk',
+          movies: ['KKKG', 'Kal ho na ho', 'jab tak h jaan']
+        }
+      ],
+      myInfo: {
+        name: 'Radhey',
+        course: 'vuejs',
+        type : 'development'
+    }
     }
   },
   
