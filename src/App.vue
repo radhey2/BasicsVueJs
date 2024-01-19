@@ -108,8 +108,14 @@
       <!-- <button v-on:click="count = count + 1">Increment</button> 
       <button v-on:click="count = count - 1">Decrement</button> -->
 
-      <button v-on:click=increment>Increment</button> 
-      <button v-on:click=decrement>Decrement</button>
+      <button v-on:click="increment(1,$event)">Increment</button> 
+      <button v-on:click="decrement(1)">Decrement</button>
+
+        <!-- 
+          ShortHand syntex for v-on
+         -->
+       <button @:click="increment(2, $event)">Increment 2</button> 
+       <button @:click="decrement(2)">Decrement 2</button>
     </div>
    </div>
    
@@ -188,11 +194,12 @@ export default {
      multiply(num) {
        return num * this.baseMultiplier;
      },
-     increment() {
-       return this.count += 1;
+     increment(num, event) {
+       this.count += num;
+      console.log("event is :" , event);
      },
-     decrement() {
-      return this.count -= 1;
+     decrement(num) {
+      this.count -=num;
     }
   },
   
