@@ -1,6 +1,6 @@
 # my_project
 # creating project using vue CLI
-vue create <project-Name>
+vue create projectName
 ## Project setup
 ```
 npm install
