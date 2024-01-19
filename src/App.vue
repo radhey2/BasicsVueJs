@@ -119,6 +119,44 @@
     </div>
    </div>
    
+   <!-- 
+    Form Handling v-model-> use for two way binding from tamplate to script and vice versa
+    -->
+    <br>
+    <div><pre>{{ JSON.stringify(formValues,null,2) }}</pre></div>
+    <form action="">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" v-model="formValues.name">
+      </div>
+
+
+      <div>
+          <label for="profile">Profile Summary</label>
+          <textarea id="profile" v-model="formValues.profileSummary"></textarea>
+      </div>
+
+      <div>
+          <label for="country">country</label>
+          <select name="country" id="country" v-model="formValues.country">
+            <option value="">Select Country</option>
+            <option value="India">India</option>
+            <option value="Australia">Australia</option>
+            <option value="America">America</option>
+            <option value="Japan">Japan</option>
+          </select>
+      </div>
+
+      <div>
+            <label for="job-location">Job Location</label>
+            <select name="job-location" id="job-location" multiple v-model="formValues.jobLocation">
+              <option value="India">India</option>
+              <option value="Australia">Australia</option>
+              <option value="America">America</option>
+              <option value="Japan">Japan</option>
+            </select>
+        </div>
+    </form>
   </div>
 
 </template>
@@ -184,7 +222,13 @@ export default {
       },
       baseMultiplier: 5,
       basevalue: 10,
-      count : 0
+      count: 0,
+      formValues: {
+        name: '',
+        profileSummary: '',
+        country: '', 
+        jobLocation : []
+      }
     }
   },
    methods: {
