@@ -88,6 +88,31 @@
     directly access in template tag like basevalue
    -->
    <h3>multiply Method {{ multiply(basevalue) }}</h3>
+
+   <!-- 
+    Event Handling using v-on directive
+    like click mouse hover etc
+    -->
+   <h2>{{ name }}</h2>
+   <div>
+    <button v-on:click="name = 'Batman'">Change Name</button>
+    <hr>
+    <button v-on:mouseover="name = 'jhon'">Change Name</button>
+    <br>
+
+    <h2>{{ count }}</h2>
+    <div>
+      <!-- 
+        Inline Event Handler
+       -->
+      <!-- <button v-on:click="count = count + 1">Increment</button> 
+      <button v-on:click="count = count - 1">Decrement</button> -->
+
+      <button v-on:click=increment>Increment</button> 
+      <button v-on:click=decrement>Decrement</button>
+    </div>
+   </div>
+   
   </div>
 
 </template>
@@ -152,7 +177,8 @@ export default {
         type : 'development'
       },
       baseMultiplier: 5,
-      basevalue : 10
+      basevalue: 10,
+      count : 0
     }
   },
    methods: {
@@ -161,6 +187,12 @@ export default {
      },
      multiply(num) {
        return num * this.baseMultiplier;
+     },
+     increment() {
+       return this.count += 1;
+     },
+     decrement() {
+      return this.count -= 1;
     }
   },
   
