@@ -67,6 +67,15 @@
     {{ name}}
     <hr>
   </h3>
+
+  <!-- 
+    List Conditional rendering
+   -->
+  <template v-for="name in names" :key="name">
+    <h3 v-if="name === 'bill'">
+      {{ name }}
+    </h3>
+  </template>
   </div>
 
 </template>
