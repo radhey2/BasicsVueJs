@@ -76,6 +76,18 @@
       {{ name }}
     </h3>
   </template>
+
+  <!-- 
+    Calling add method
+   -->
+  <h3> add method {{add(2,3)}}</h3>
+
+  <!-- 
+    Calling multiply method
+    need to use this keyword while accessing the data peoperty in method but  we can
+    directly access in template tag like basevalue
+   -->
+   <h3>multiply Method {{ multiply(basevalue) }}</h3>
   </div>
 
 </template>
@@ -138,7 +150,17 @@ export default {
         name: 'Radhey',
         course: 'vuejs',
         type : 'development'
+      },
+      baseMultiplier: 5,
+      basevalue : 10
     }
+  },
+   methods: {
+    add(a, b) {
+      return a + b;
+     },
+     multiply(num) {
+       return num * this.baseMultiplier;
     }
   },
   
