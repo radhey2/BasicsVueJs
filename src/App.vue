@@ -84,11 +84,11 @@
     <!-- 
     List Conditional rendering
    -->
-    <template v-for="name in names" :key="name">
+    <div v-for="name in names" :key="name">
       <h3 v-if="name === 'bill'">
         {{ name }}
       </h3>
-    </template>
+    </div>
 
     <!-- 
     Calling add method
@@ -216,6 +216,10 @@
     <button @click="items.push({id: 4,price : 500,title: 'movie'})">Add item</button>
     <h2>Method Total : {{ getTotal() }}</h2>
     <input type="text" v-model="country">
+    <div v-for="item in items" :key="item.id">
+      <h2 v-if="item.price >100">{{ item.title }} {{ item.price }}</h2>
+    </div>
+    <h2 v-for="item in expensiveItem" :key="item.id">{{ item.title }} {{ item.price }}</h2>
   </div>
 </template>
 
@@ -340,6 +344,9 @@ export default {
     total() {
       console.log("total computed");
       return this.items.reduce((total, curr) => (total = total + curr.price), 0);
+    },
+    expensiveItem() {
+      return this.items.filter(item => item.price > 100);
     }
   },
 };
