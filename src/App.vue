@@ -196,7 +196,12 @@
         <label for="JS">HTML</label>
         <div>
           <label for="age">AGE</label>
-          <input @keyup.enter="submitForm" type="number" id="age" v-model.number="formValues.age" />
+          <input
+            @keyup.enter="submitForm"
+            type="number"
+            id="age"
+            v-model.number="formValues.age"
+          />
         </div>
 
         <div><button>Submit</button></div>
@@ -205,6 +210,10 @@
     <h2 v-once>{{ name }}</h2>
     <button @click="name = 'Batman'">Change name</button>
     <h3 v-pre>{{ name }}</h3>
+    <h3>{{ completename }}</h3>
+    <!-- <h3>Total without computed : {{ items.reduce((total,curr) =>(total = total + curr.price),0) }} </h3> -->
+    <h3>Totalwith Computed : {{ total }}</h3>
+    <button @click="items.push({id: 4,price : 500,title: 'movie'})">Add item</button>
   </div>
 </template>
 
@@ -275,8 +284,27 @@ export default {
         jobLocation: [],
         remotework: "no",
         skillset: [],
-        age: null
+        age: null,
       },
+      firstName: "jhon",
+      lastName: "jay",
+      items: [
+        {
+          id: 1,
+          price: 100,
+          title: "TV",
+        },
+        {
+          id: 2,
+          price: 200,
+          title: "Phone",
+        },
+        {
+          id: 3,
+          price: 300,
+          title: "car",
+        },
+      ],
     };
   },
   methods: {
@@ -297,6 +325,14 @@ export default {
       event.preventDefault();
       console.log("Form Values ", this.formValues);
     },
+  },
+  computed: {
+    completename() {
+      return `${this.firstName} ${this.lastName}`;
+    },
+    total() {
+      return this.items.reduce((total, curr) => (total = total + curr.price), 0);
+    }
   },
 };
 </script>

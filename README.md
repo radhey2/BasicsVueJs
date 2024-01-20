@@ -42,3 +42,13 @@ like trim,number,lazy,prevent,key
 v-once - Render the corresponding HTML element only once. On subsequent re-renders,trated as static content and skiped
 
 v-pre - not to compile html element it is render as it is
+
+# ways to display data in the UI
+
+1 Static Html 2. Text Interpolation 3. Simple explression 4. Methods 5. Computed Property
+
+Computed Properties :
+
+bound to template like data propertires
+they are used for composing new data from existing sources
+They are highly performant as they cached calculation which only update when dependencies changes
