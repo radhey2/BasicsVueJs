@@ -220,6 +220,8 @@
       <h2 v-if="item.price >100">{{ item.title }} {{ item.price }}</h2>
     </div>
     <h2 v-for="item in expensiveItem" :key="item.id">{{ item.title }} {{ item.price }}</h2>
+    <h2>Full Name {{ compName }}</h2>
+    <button @click="changeFullName">change name</button>
   </div>
 </template>
 
@@ -335,6 +337,9 @@ export default {
     getTotal() {
       console.log("Total method");
       return this.items.reduce((total, curr) => (total = total + curr.price), 0);
+    },
+    changeFullName() {
+      this.compName = 'Harry Potter';
     }
   },
   computed: {
@@ -347,6 +352,16 @@ export default {
     },
     expensiveItem() {
       return this.items.filter(item => item.price > 100);
+    },
+    compName: {
+      get(){
+        return `${this.firstName} ${this.lastName}`;
+      },
+      set(value) {
+        const names = value.split(' ');
+        this.firstName = names[0];
+        this.lastName = names[1];
+      }
     }
   },
 };
