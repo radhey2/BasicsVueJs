@@ -213,15 +213,23 @@
     <h3>{{ completename }}</h3>
     <!-- <h3>Total without computed : {{ items.reduce((total,curr) =>(total = total + curr.price),0) }} </h3> -->
     <h3>Totalwith Computed : {{ total }}</h3>
-    <button @click="items.push({id: 4,price : 500,title: 'movie'})">Add item</button>
+    <button @click="items.push({ id: 4, price: 500, title: 'movie' })">Add item</button>
     <h2>Method Total : {{ getTotal() }}</h2>
-    <input type="text" v-model="country">
+    <input type="text" v-model="country" />
     <div v-for="item in items" :key="item.id">
-      <h2 v-if="item.price >100">{{ item.title }} {{ item.price }}</h2>
+      <h2 v-if="item.price > 100">{{ item.title }} {{ item.price }}</h2>
     </div>
-    <h2 v-for="item in expensiveItem" :key="item.id">{{ item.title }} {{ item.price }}</h2>
+    <h2 v-for="item in expensiveItem" :key="item.id">
+      {{ item.title }} {{ item.price }}
+    </h2>
     <h2>Full Name {{ compName }}</h2>
     <button @click="changeFullName">change name</button>
+    <h2>Volume Tarcker</h2>
+    <h3>Current Volume {{ volume }}</h3>
+    <div>
+      <button @click="volume += 2">Increse</button>
+      <button @click="volume -= 2">Decrese</button>
+    </div>
   </div>
 </template>
 
@@ -313,7 +321,8 @@ export default {
           title: "car",
         },
       ],
-      country: '',
+      country: "",
+      volume: 0,
     };
   },
   methods: {
@@ -339,8 +348,8 @@ export default {
       return this.items.reduce((total, curr) => (total = total + curr.price), 0);
     },
     changeFullName() {
-      this.compName = 'Harry Potter';
-    }
+      this.compName = "Harry Potter";
+    },
   },
   computed: {
     completename() {
@@ -351,19 +360,26 @@ export default {
       return this.items.reduce((total, curr) => (total = total + curr.price), 0);
     },
     expensiveItem() {
-      return this.items.filter(item => item.price > 100);
+      return this.items.filter((item) => item.price > 100);
     },
     compName: {
-      get(){
+      get() {
         return `${this.firstName} ${this.lastName}`;
       },
       set(value) {
-        const names = value.split(' ');
+        const names = value.split(" ");
         this.firstName = names[0];
         this.lastName = names[1];
+      },
+    },
+  },
+  watch: {
+    volume(newValue,oldValue) {
+      if (newValue > oldValue && newValue === 16) {
+        alert(`Volume is now at ${newValue}. Let's party!`);
       }
     }
-  },
+  }
 };
 </script>
 

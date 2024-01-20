@@ -52,3 +52,7 @@ Computed Properties :
 bound to template like data propertires
 they are used for composing new data from existing sources
 They are highly performant as they cached calculation which only update when dependencies changes
+
+# watchers
+
+Allow you to watch any data or computed and excute some code in response to change in the value
