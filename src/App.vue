@@ -142,7 +142,7 @@
     <form @submit="submitForm">
       <div>
         <label for="name">Name</label>
-        <input type="text" id="name" v-model="formValues.name" />
+        <input type="text" id="name" v-model.trim.lazy="formValues.name" />
       </div>
 
       <div>
@@ -194,11 +194,17 @@
         <label for="CSS">CSS</label>
         <input type="checkbox" id="JS" value="JS" v-model="formValues.skillset" />
         <label for="JS">HTML</label>
+        <div>
+          <label for="age">AGE</label>
+          <input @keyup.enter="submitForm" type="number" id="age" v-model.number="formValues.age" />
+        </div>
 
-         <div><button>Submit</button></div>
+        <div><button>Submit</button></div>
       </div>
     </form>
-   
+    <h2 v-once>{{ name }}</h2>
+    <button @click="name = 'Batman'">Change name</button>
+    <h3 v-pre>{{ name }}</h3>
   </div>
 </template>
 
@@ -269,6 +275,7 @@ export default {
         jobLocation: [],
         remotework: "no",
         skillset: [],
+        age: null
       },
     };
   },
@@ -288,8 +295,8 @@ export default {
     },
     submitForm(event) {
       event.preventDefault();
-      console.log('Form Values ',this.formValues);
-    }
+      console.log("Form Values ", this.formValues);
+    },
   },
 };
 </script>
