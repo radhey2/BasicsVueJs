@@ -230,12 +230,17 @@
       <button @click="volume += 2">Increse</button>
       <button @click="volume -= 2">Decrese</button>
     </div>
+    <Greet_Page></Greet_Page>
   </div>
 </template>
 
 <script>
+import Greet_Page from './component/Greet_Page.vue';
 export default {
   name: "App",
+  components : {
+    Greet_Page
+  },
   data() {
     return {
       name: "Radhey",
