@@ -230,7 +230,11 @@
       <button @click="volume += 2">Increse</button>
       <button @click="volume -= 2">Decrese</button>
     </div>
-    <Greet_Page></Greet_Page>
+    <Greet_Page name="Radhey" heroname="Salman"></Greet_Page>
+    <Greet_Page name="Jhon" heroname="Akshy"></Greet_Page>
+    <Greet_Page name="Sunny" heroname="Hritik"></Greet_Page>
+    <Greet_Page :name="name" :dept="dept"></Greet_Page>
+    <Greet_Page :name="name" :dept="dept"></Greet_Page>
   </div>
 </template>
 
