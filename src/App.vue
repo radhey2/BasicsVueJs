@@ -235,15 +235,19 @@
     <Greet_Page name="Sunny" heroname="Hritik"></Greet_Page>
     <Greet_Page :name="name" :dept="dept"></Greet_Page>
     <Greet_Page :name="name" :dept="dept"></Greet_Page>
+    <Article title="Article Tital" :likes=60></Article>
+    <Article :likes=12 :isPublished=true></Article>
   </div>
 </template>
 
 <script>
 import Greet_Page from './component/Greet_Page.vue';
+import Article from './component/Article.vue';
 export default {
   name: "App",
   components : {
-    Greet_Page
+    Greet_Page,
+    Article
   },
   data() {
     return {
